@@ -50,5 +50,7 @@
       "lib"
     ]
   },
-  "dependencies": {}
+  "dependencies": {
+    "node-fetch": "^1.6.3"
+  }
 }

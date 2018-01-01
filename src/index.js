@@ -20,3 +20,8 @@ export async function globalMarket (opts?: { convert?: string }): Object {
   const res = await fetch(`https://api.coinmarketcap.com/v1/global/?${query}`)
   return res.json()
 }
+
+export async function getCurrencyGraph (opts?: { currencyName: string, startTs: number, endTs: number }): Object {
+  const res = await fetch(`https://graphs.coinmarketcap.com/currencies/${opts.currencyName}/${opts.startTs}/${opts.endTs}`)
+  return res.json()
+}

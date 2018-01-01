@@ -5,6 +5,19 @@
 
 [![js-standard-style](https://cdn.rawgit.com/feross/standard/master/badge.svg)](https://github.com/feross/standard)
 
+## Usage
+
+**Note:** coinmarketcap depends on [`fetch()`](https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/fetch) being defined globally.
+
+- If you are using this in electron, it should work without any configuration.
+- If you are using this in Node.js, you will need to use [`node-fetch`](https://www.npmjs.com/package/node-fetch).
+
+  **Example:**
+  ```js
+  global.fetch = require('node-fetch')
+  const cc = require('cryptocompare')
+  ```
+
 ## API
 
 ### `ticker([options])`

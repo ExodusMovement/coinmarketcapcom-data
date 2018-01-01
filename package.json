@@ -1,18 +1,21 @@
 {
   "name": "coinmarketcap",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "",
   "keywords": [],
   "bugs": {
     "url": "https://github.com/ExodusMovement/coinmarketcap/issues"
   },
+  "typings": "coinmarketcap.d.ts",
   "license": "MIT",
   "author": "The Exodus Movement",
   "contributors": [
-    "Kirill Fomichev <fanatid@ya.ru> (https://github.com/fanatid)"
+    "Kirill Fomichev <fanatid@ya.ru> (https://github.com/fanatid)",
+    "Evan Shortiss <evanshortiss@gmail.com> (https://github.com/evanshortiss)"
   ],
   "files": [
     "lib",
+    "coinmarketcap.d.ts",
     "package.json",
     "LICENSE",
     "README.md"

@@ -2,8 +2,23 @@
 
 [![NPM Package](https://img.shields.io/npm/v/coinmarketcap.svg?style=flat-square)](https://www.npmjs.org/package/coinmarketcap)
 [![Build Status](https://img.shields.io/travis/ExodusMovement/coinmarketcap.svg?branch=master&style=flat-square)](https://travis-ci.org/ExodusMovement/coinmarketcap)
+[![TypeScript](https://badges.frapsoft.com/typescript/version/typescript-next.svg?v=101)](https://github.com/ellerbrock/typescript-badges/)
+
 
 [![js-standard-style](https://cdn.rawgit.com/feross/standard/master/badge.svg)](https://github.com/feross/standard)
+
+## Usage
+
+**Note:** coinmarketcap depends on [`fetch()`](https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/fetch) being defined globally.
+
+- If you are using this in electron, it should work without any configuration.
+- If you are using this in Node.js, you will need to use [`node-fetch`](https://www.npmjs.com/package/node-fetch).
+
+  **Example:**
+  ```js
+  global.fetch = require('node-fetch')
+  const cc = require('cryptocompare')
+  ```
 
 ## API
 
@@ -100,6 +115,38 @@ await coinmarketcap.ticker()
 //     "active_currencies": 680,
 //     "active_assets": 80,
 //     "active_markets": 2817
+// }
+```
+
+### `getCurrencyGraph(options)`
+
+Get data that is used to draw currency graphs. Returned keys are arrays
+cotaining arrays with X, Y values for graphing.
+
+**Note:** This is not an official coinmarketcap API and could change.
+
+- `options` (Object) Optional.
+  - `currencyName` (String) The full name, e.g Ethereum
+  - `startTs` (Number) A millisecond timestamp for when grpah data should start
+  - `endTs` (Number) A millisecond timestamp for when grpah data should end
+
+Returns a promise.
+
+**Example:**
+```js
+const thirtyDaysMs = 30 * 24 * 60 * 60 * 1000
+
+// Get range over the past month
+await coinmarketcap.getCurrencyGraph({
+  currencyName: 'ethereum',
+  startTs: Date.now() - thirtyDaysMs,
+  endTs: Date.now()
+})
+// {
+//   market_cap_by_available_supply: Array<[number, number]>
+//   price_btc: Array<[number, number]>
+//   price_usd: Array<[number, number]>
+//   volume_usd: Array<[number, number]>
 // }
 ```
 

@@ -18,7 +18,7 @@ const tickerKeys = [
   'percent_change_7d',
   'last_updated',
   'price_eur',
-  'volume_eur',
+  '24h_volume_eur',
   'market_cap_eur'
 ]
 
@@ -27,6 +27,7 @@ test('ticker()', async t => {
     limit: 5,
     convert: 'eur'
   })
+
   t.assert(Array.isArray(data), 'data is an array')
   t.is(data.length, 5, 'limit works')
   data.forEach((item, index) => {
@@ -57,6 +58,24 @@ test('globalMarket()', async t => {
   ]
   keys.map(key => data[key])
   .forEach((val, i) => t.is(typeof val, 'number', `data.${keys[i]} is a number`))
+
+  t.end()
+})
+
+test('getCurrencyGraph()', async t => {
+  const data = await coinmarketcap.getCurrencyGraph({
+    currencyName: 'ethereum',
+    startTs: Date.now() - (30 * 24 * 60 * 60 * 1000), // 1 month range,
+    endTs: Date.now()
+  })
+  const keys = [
+    'market_cap_by_available_supply',
+    'price_btc',
+    'price_usd',
+    'volume_usd'
+  ]
+  keys.map(key => data[key])
+  .forEach((val, i) => t.is(Array.isArray(val), true, `data.${keys[i]} is an Array`))
 
   t.end()
 })

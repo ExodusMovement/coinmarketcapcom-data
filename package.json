@@ -15,6 +15,7 @@
   ],
   "files": [
     "lib",
+    "coinmarketcap.d.ts",
     "package.json",
     "LICENSE",
     "README.md"

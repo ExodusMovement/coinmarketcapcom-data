@@ -123,6 +123,8 @@ await coinmarketcap.ticker()
 Get data that is used to draw currency graphs. Returned keys are arrays
 cotaining arrays with X, Y values for graphing.
 
+**Note:** This is not an official coinmarketcap API and could change.
+
 - `options` (Object) Optional.
   - `currencyName` (String) The full name, e.g Ethereum
   - `startTs` (Number) A millisecond timestamp for when grpah data should start
